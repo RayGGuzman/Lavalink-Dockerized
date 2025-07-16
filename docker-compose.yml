@@ -7,5 +7,4 @@ services:
       - "2333:2333"
     volumes:
       - lavalink-data:/app/logs/
-      - ./application.yml:/app/application.yml  # Opcional
     restart: unless-stopped
