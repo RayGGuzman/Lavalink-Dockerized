@@ -1,15 +1,15 @@
 version: "3.8"
+
 services:
   lavalink:
-    image: lavalink
     build: .
     ports:
-      - "2333:2333"
+      - "${LAVALINK_PORT}:${LAVALINK_PORT}"
     volumes:
       - lavalink-data:/app/logs/
-      -
-        type: bind
+      - type: bind
         source: ./volumes/lavalink/application.yml
         target: /app/application.yml
-        content: ""
     restart: unless-stopped
+volumes:
+  lavalink-data:
