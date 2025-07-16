@@ -7,5 +7,9 @@ services:
       - "2333:2333"
     volumes:
       - lavalink-data:/app/logs/
-      - lavalink-application.yml:/app/application.yml
+      -
+        type: bind
+        source: ./volumes/lavalink/application.yml
+        target: /app/application.yml
+        content: ""
     restart: unless-stopped
