@@ -3,6 +3,8 @@ version: "3.8"
 services:
   lavalink:
     build: .
+    ports:
+      - "${LAVALINK_INSIDE_PORT:-2333}:${LAVALINK_PORT:-2333}"
     volumes:
       - lavalink-data:/app/logs/
       - type: bind
