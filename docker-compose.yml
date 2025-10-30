@@ -4,12 +4,19 @@ services:
   lavalink:
     build: .
     ports:
-      - "${LAVALINK_INSIDE_PORT:-2333}:${LAVALINK_PORT:-2333}"
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+      - SERVER_ADDRESS=${SERVER_ADDRESS:-0.0.0.0}
+      - SERVER_HTTP2_ENABLED=${SERVER_HTTP2_ENABLED:-false}
+      - LAVALINK_SERVER_PASSWORD=${LAVALINK_SERVER_PASSWORD:-youshallnotpass}
     volumes:
-      - lavalink-data:/app/logs/
+      - lavalink-logs:/app/logs/
+      - lavalink-plugins:/app/plugins/
       - type: bind
         source: ./volumes/lavalink/application.yml
         target: /app/application.yml
     restart: unless-stopped
 volumes:
-  lavalink-data:
+  lavalink-logs:
+  lavalink-plugins:
