@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jre-jammy
+FROM azul/zulu-openjdk:17-latest
 
 WORKDIR /app
 
