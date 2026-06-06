@@ -13,6 +13,9 @@ services:
     volumes:
       - lavalink-logs:/app/logs/
       - lavalink-plugins:/app/plugins/
+      - type: bind
+        source: ./volumes/lavalink/application.yml
+        target: /app/application.yml
     restart: unless-stopped
 volumes:
   lavalink-logs:
